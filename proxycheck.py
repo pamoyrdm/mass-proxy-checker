@@ -16,7 +16,8 @@ def main():
     cantidad_por_lote = 10
 
     niantic_url = 'https://pgorelease.nianticlabs.com/plfe/version'
-    ptc_url = 'https://sso.pokemon.com/sso/login?locale=en&service=https://www.pokemon.com/us/pokemon-trainer-club/caslogin'
+    #ptc_url = 'https://sso.pokemon.com/sso/login?locale=en&service=https://www.pokemon.com/us/pokemon-trainer-club/caslogin'
+    ptc_url = 'https://access.pokemon.com/oauth2/auth?scope=openid+offline+email'
 
     niantic_headers = {'User-Agent': 'Niantic App'}
     ptc_headers = {'User-Agent': 'pokemongo/1 CFNetwork/811.4.18 Darwin/16.5.0', 'Host': 'sso.pokemon.com'}
@@ -86,7 +87,8 @@ def verificar_proxy(proxy, niantic_url, ptc_url, niantic_headers, ptc_headers, b
                 escribir_archivo(proxy, 'errores.txt')
                 errores[0] += 1
     except Exception as e:
-        print('Error al verificar el proxy {}: {}'.format(proxy, e))
+        #print('Error al verificar el proxy {}: {}'.format(proxy, e))
+        print('Error al verificar el proxy {}: '.format(proxy))
         escribir_archivo(proxy, 'errores.txt')
         # Usar el Lock para sincronizar el acceso a variables compartidas
         with lock:
